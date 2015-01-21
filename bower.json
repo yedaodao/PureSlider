@@ -1,0 +1,17 @@
+{
+  "name": "PureSlider",
+  "version": "1.0.0",
+  "authors": [
+    "yedaodao <404069912@qq.com>"
+  ],
+  "description": "It is a plugin for Zepto which is a simple carousel.",
+  "keywords": [
+    "carousel",
+    "zepto"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+	"zepto": "~1.1.6",
+	"requirejs": "~2.1.0"
+  }
+}
