@@ -16,18 +16,25 @@ module.exports = function (grunt) {
             requirejs: {
                 compile: {
                     options: {
-                        baseUrl: "./",
-                        appDir: "src/scripts",
-                        mainConfigFile: "./src/scripts/config.js",
+                        baseUrl: "src/scripts",
                         dir: "dist/scripts",
-                        optimize: "uglify2",
+                        optimize: "uglify",
+                        removeCombined: true,
+                        skipDirOptimize: true,
+                        paths: {
+                            zepto:"../../components/zepto/zepto"
+                        },
+                        shim: {
+                            zepto: {
+                                exports: "$"
+                            }
+                        },
                         modules: [
                             {
                                 name: "PureSlider",
                                 exclude: [
                                     "zepto"
-                                ],
-                                exports: ""
+                                ]
                             }
                         ]}
                 }
