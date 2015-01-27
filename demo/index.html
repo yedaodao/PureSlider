@@ -5,8 +5,23 @@
     <title></title>
 </head>
 <body>
+<div id="test"></div>
 <script src="../components/requirejs/require.js"></script>
-<script src="../src/scripts/config.js"></script>
-<script src="../src/scripts/PureSlider.js"></script>
+<!--<script src="../src/scripts/config.js"></script>-->
+<script>
+    requirejs.config({
+        paths: {
+            zepto: "../components/zepto/zepto"
+        },
+        shim: {
+            zepto: {
+                exports: "$"
+            }
+        }
+    });
+    require(["../dist/scripts/PureSlider"], function (PureSlider) {
+        PureSlider.test();
+    });
+</script>
 </body>
 </html>

@@ -3,10 +3,14 @@
  */
 define(
     [
-        "app/PageManager",
-        "app/Carousel"
+        "PageManager",
+        "Carousel"
     ],
     function (PageManager, Carousel) {
-        console.log(PageManager);
+        return {
+            test: function () {
+                alert(PageManager.getCurrentIndex());
+            }
+        }
     }
 );

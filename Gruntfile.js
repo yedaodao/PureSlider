@@ -17,21 +17,17 @@ module.exports = function (grunt) {
                 compile: {
                     options: {
                         baseUrl: "./",
+                        appDir: "src/scripts",
                         mainConfigFile: "./src/scripts/config.js",
                         dir: "dist/scripts",
                         optimize: "uglify2",
                         modules: [
                             {
-                                name: "./zepto"
-                            },
-                            {
-                                name: "./src/scripts/PageManager"
-                            },
-                            {
-                                name: "./src/scripts/Carousel",
+                                name: "PureSlider",
                                 exclude: [
-                                    "components/zepto/zepto"
-                                ]
+                                    "zepto"
+                                ],
+                                exports: ""
                             }
                         ]}
                 }

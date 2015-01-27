@@ -3,10 +3,10 @@
  */
 define(
     [
-        'zepto',
-        'app/PageManager'
+        "zepto",
+        "PageManager"
     ],
     function ($, PageManager) {
-
+        console.log($("#test"));
     }
 );
