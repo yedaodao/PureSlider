@@ -14,16 +14,33 @@ module.exports = function (grunt) {
                 }
             },
             uglify: {
-                options: {
-                    comporess: false,
-                    mangle: false,
-                    beautify: true
-                },
-                my_target: {
+                development: {
+                    options: {
+                        compress: false,
+                        mangle: false,
+                        beautify: true
+                    },
                     files: {
-                        "dist/script/PureSlider.js": []
+                        "dist/scripts/PureSlider.js": [
+                            "src/scripts/core.js",
+                            "src/scripts/page_manager.js"
+                        ]
+                    }
+                },
+                dist: {
+                    options: {
+                        compress: true,
+                        mangle: true,
+                        beautify: false
+                    },
+                    files: {
+                        "dist/scripts/PureSlider.js": [
+                            "src/scripts/core.js",
+                            "src/scripts/page_manager.js"
+                        ]
                     }
                 }
+
             }
         }
     );
@@ -33,7 +50,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Default task(s).
-    grunt.registerTask('default', ['less','uglify']);
+    grunt.registerTask('default', ['less', 'uglify']);
 
 }
 ;

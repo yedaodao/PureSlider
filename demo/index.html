@@ -3,12 +3,18 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="../dist/css/pure_slider.css"/>
 </head>
 <body>
-<div id="test"></div>
+<div id="testBanner">
+    <div class="carousel-container">
+        <div class="carousel-page">1</div>
+        <div class="carousel-page">2</div>
+        <div class="carousel-page">3</div>
+    </div>
+</div>
 <script src="../components/zepto/zepto.js"></script>
-<script src="../src/scripts/core.js"></script>
-<script src="../src/scripts/page_manager.js"></script>
+<script src="../dist/scripts/PureSlider.js"></script>
 <script>
     $(function () {
         $("#test").PureSlider();

@@ -1,3 +1,22 @@
-.page-container {
-  width: 100%;
+.carousel-container {
+  position: relative;
+  top: 0;
+  left: 0;
+
+  display: none;
+
+  &.init {
+    display: block;
+  }
+}
+
+.carousel-page {
+  box-sizing: border-box;
+  float: left;
+
+  &:last-child:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
 }
