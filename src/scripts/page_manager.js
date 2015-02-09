@@ -4,9 +4,9 @@
 (function ($) {
     var pluginName = "PageManager";
     $.Pure[pluginName] = function () {
-        return new PageManger();
+        return new PageManager();
     };
-    function PageManger() {
+    function PageManager() {
         var currentIndex = -1,
             totalLength = 0,
             pageList = [];

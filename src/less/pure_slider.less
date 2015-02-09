@@ -1,22 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .carousel-container {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
 
-  display: none;
+  visibility: hidden;
 
   &.init {
-    display: block;
+    visibility: visible;
   }
 }
 
 .carousel-page {
-  box-sizing: border-box;
+//  box-sizing: border-box;
   float: left;
+
+  border: 2px solid #ccc;
 
   &:last-child:after {
     display: block;
     content: "";
     clear: both;
   }
+}
+
+.carousel-animated {
+
 }

@@ -8,18 +8,25 @@
         return new CarouselManager();
     };
     function CarouselManager() {
-        var container = null,
-            pages = null;
+        var carouselDom = null,
+            container = null,
+            pages = null,
+            pageNum = 0,
+            baseWidth = 0;
         return {
             /**
              * 初始化结点
-             * @param carouselDom
+             * @param cDom
              * @returns {boolean}
              */
-            init: function (carouselDom) {
+            init: function (cDom) {
+                carouselDom = cDom;
                 container = carouselDom.find(".carousel-container");
-                if (container.hasClass("init")) return false;
+                if (container.hasClass("init"))
+                    return false;
+                carouselDom.css("position", "relative").css("overflow", "hidden");
                 pages = container.find(".carousel-page");
+                pageNum = pages.length;
                 this.resize();
                 container.addClass("init");
             },
@@ -27,7 +34,12 @@
              * 调整大小
              */
             resize: function () {
-
+                baseWidth = carouselDom.width();
+                carouselDom.height(container.height());
+                container.width(pageNum * baseWidth);
+                $.each(pages, function (i, n) {
+                    console.log(n.style.width);
+                });
             },
 
             /**

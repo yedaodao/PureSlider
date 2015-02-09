@@ -23,7 +23,8 @@ module.exports = function (grunt) {
                     files: {
                         "dist/scripts/PureSlider.js": [
                             "src/scripts/core.js",
-                            "src/scripts/page_manager.js"
+                            "src/scripts/page_manager.js",
+                            "src/scripts/carousel_manager.js"
                         ]
                     }
                 },
@@ -36,7 +37,8 @@ module.exports = function (grunt) {
                     files: {
                         "dist/scripts/PureSlider.js": [
                             "src/scripts/core.js",
-                            "src/scripts/page_manager.js"
+                            "src/scripts/page_manager.js",
+                            "src/scripts/carousel_manager.js"
                         ]
                     }
                 }

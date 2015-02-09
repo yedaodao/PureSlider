@@ -8,6 +8,7 @@
         $.Pure = {};
     //通用设置
     var pluginName = "PureSlider",
+        options = {},
         defaultOptions = {
             autoScroll: true,
             scrollInterval: 3000,
@@ -16,9 +17,9 @@
         };
     //真正处理函数
     $.Pure[pluginName] = function (el, opts) {
-        var pageManager = $.Pure.PageManager();
-        var i = pageManager.getCurrentIndex();
-        console.log(pageManager);
+        var carouselManager = $.Pure.CarouselManager();
+        options = $.extend(defaultOptions, opts);
+        carouselManager.init(el);
     };
 
     //包装插件
