@@ -14,7 +14,6 @@ body {
 .carousel-page {
   box-sizing: border-box;
   float: left;
-  border: 2px solid #ccc;
 }
 .carousel-page:last-child:after {
   display: block;

@@ -28,14 +28,14 @@
             },
             /**
              * 在最后增加页面
-             * @param pages
+             * @param page
              * @returns {boolean}
              */
-            addPages: function (pages) {
-                if (pages == null) return false;
-                pageList.push(pages);
+            addPage: function (page) {
+                if (page == null) return false;
+                pageList.push(page);
                 if (totalLength == 0) currentIndex++;
-                totalLength = pageList.length;
+                totalLength++;
             },
             /**
              * 某页是否存在
@@ -64,6 +64,7 @@
             next: function () {
                 if (currentIndex < 0 || currentIndex + 2 > totalLength) return false;
                 currentIndex++;
+                return true;
             },
             /**
              * 前一页
@@ -72,6 +73,7 @@
             prev: function () {
                 if (currentIndex < 1) return false;
                 currentIndex--;
+                return true;
             },
             /**
              * 跳转到某页
@@ -81,6 +83,7 @@
             go: function (index) {
                 if (!this.existPage(index)) return false;
                 currentIndex = index;
+                return true;
             }
         }
     }

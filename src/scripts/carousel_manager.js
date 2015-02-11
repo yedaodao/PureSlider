@@ -51,12 +51,28 @@
              */
             addListener: function (pageManager) {
                 var self = this;
-                pageManager.addPages(pages);
-                container.click(function () {
-                    console.log(pageManager.getCurrentIndex());
-                    pageManager.next();
-                    self.slide(-baseWidth * pageManager.getCurrentIndex());
+                $.each(pages, function (i, n) {
+                    pageManager.addPage(n);
                 });
+                container.click(function () {
+                    self.turnPage(pageManager, 1);
+                });
+            },
+
+            /**
+             * 翻页
+             * @param pageManager
+             * @param direction
+             */
+            turnPage: function (pageManager, direction) {
+                if (direction == 0) {
+                    if (!pageManager.prev()) return false;
+                    this.slide(baseWidth * pageManager.getCurrentIndex(), pageManager);
+                }
+                else if (direction == 1) {
+                    if (!pageManager.next()) return false;
+                    this.slide(-baseWidth * pageManager.getCurrentIndex(), pageManager);
+                }
             },
 
             /**
@@ -69,12 +85,17 @@
             /**
              * 滚动
              * @param distance
-             * @param callBack
+             * @param pageManager
              */
-            slide: function (distance, callBack) {
+            slide: function (distance, pageManager) {
                 container.animate({
                     translate3d: distance + "px,0,0"
-                }, 500, "ease-out", callBack);
+                }, 400, "ease-out", function () {
+                    container.trigger("PURE_SLIDE", [
+                        pageManager.getCurrentIndex(),
+                        pageManager.getCurrentPage()
+                    ]);
+                });
             }
         }
     }
