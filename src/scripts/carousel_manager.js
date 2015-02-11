@@ -17,9 +17,10 @@
             /**
              * 初始化结点
              * @param cDom
+             * @param pageManager
              * @returns {boolean}
              */
-            init: function (cDom) {
+            init: function (cDom, pageManager) {
                 carouselDom = cDom;
                 container = carouselDom.find(".carousel-container");
                 if (container.hasClass("init"))
@@ -28,8 +29,10 @@
                 pages = container.find(".carousel-page");
                 pageNum = pages.length;
                 this.resize();
+                this.addListener(pageManager);
                 container.addClass("init");
             },
+
             /**
              * 调整大小
              */
@@ -38,8 +41,29 @@
                 carouselDom.height(container.height());
                 container.width(pageNum * baseWidth);
                 $.each(pages, function (i, n) {
-                    console.log(n.style.width);
+                    n.style.width = baseWidth + "px";
                 });
+            },
+
+            /**
+             * 添加固有监听器
+             * @param pageManager
+             */
+            addListener: function (pageManager) {
+                var self = this;
+                pageManager.addPages(pages);
+                container.click(function () {
+                    console.log(pageManager.getCurrentIndex());
+                    pageManager.next();
+                    self.slide(-baseWidth * pageManager.getCurrentIndex());
+                });
+            },
+
+            /**
+             * 移除固有监听器
+             */
+            removeListener: function () {
+
             },
 
             /**
@@ -48,7 +72,9 @@
              * @param callBack
              */
             slide: function (distance, callBack) {
-
+                container.animate({
+                    translate3d: distance + "px,0,0"
+                }, 500, "ease-out", callBack);
             }
         }
     }

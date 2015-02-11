@@ -12,6 +12,7 @@ body {
   visibility: visible;
 }
 .carousel-page {
+  box-sizing: border-box;
   float: left;
   border: 2px solid #ccc;
 }

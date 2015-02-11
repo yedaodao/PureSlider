@@ -52,7 +52,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Default task(s).
-    grunt.registerTask('default', ['less', 'uglify']);
+    grunt.registerTask('default', ['less:development', 'uglify:development']);
 
 }
 ;

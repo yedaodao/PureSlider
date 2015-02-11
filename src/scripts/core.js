@@ -17,9 +17,10 @@
         };
     //真正处理函数
     $.Pure[pluginName] = function (el, opts) {
-        var carouselManager = $.Pure.CarouselManager();
+        var carouselManager = $.Pure.CarouselManager(),
+            pageManager = $.Pure.PageManager();
         options = $.extend(defaultOptions, opts);
-        carouselManager.init(el);
+        carouselManager.init(el, pageManager);
     };
 
     //包装插件

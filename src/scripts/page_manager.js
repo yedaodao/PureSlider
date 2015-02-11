@@ -27,16 +27,15 @@
                 return currentIndex;
             },
             /**
-             * 在最后增加一页
-             * @param page
+             * 在最后增加页面
+             * @param pages
              * @returns {boolean}
              */
-            addPage: function (page) {
-                if (page == null) return false;
-                pageList.push(page);
+            addPages: function (pages) {
+                if (pages == null) return false;
+                pageList.push(pages);
                 if (totalLength == 0) currentIndex++;
-                totalLength++;
-
+                totalLength = pageList.length;
             },
             /**
              * 某页是否存在
