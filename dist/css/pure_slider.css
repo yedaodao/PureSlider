@@ -15,6 +15,9 @@ body {
   box-sizing: border-box;
   float: left;
 }
+.carousel-page img {
+  width: 100%;
+}
 .carousel-page:last-child:after {
   display: block;
   content: "";
