@@ -38,6 +38,7 @@
              */
             resize: function () {
                 baseWidth = carouselDom.width();
+                console.log(container.height());
                 carouselDom.height(container.height());
                 container.width(pageNum * baseWidth);
                 $.each(pages, function (i, n) {
@@ -54,9 +55,7 @@
                 $.each(pages, function (i, n) {
                     pageManager.addPage(n);
                 });
-                container.click(function () {
-                    self.turnPage(pageManager, 1);
-                });
+
             },
 
             /**

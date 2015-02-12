@@ -21,6 +21,7 @@
             pageManager = $.Pure.PageManager();
         options = $.extend(defaultOptions, opts);
         carouselManager.init(el, pageManager);
+        return
     };
 
     //包装插件
