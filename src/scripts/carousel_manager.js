@@ -55,7 +55,6 @@
                 $.each(pages, function (i, n) {
                     pageManager.addPage(n);
                 });
-
             },
 
             /**
