@@ -4,5 +4,15 @@
  */
 ;
 (function ($) {
-
+    var pluginName = "TouchManager";
+    $.Pure[pluginName] = function () {
+        return new TouchManager();
+    };
+    function TouchManager() {
+        return {
+            addSwipingListener: function (el, callback) {
+                
+            }
+        }
+    }
 })(window.Zepto);

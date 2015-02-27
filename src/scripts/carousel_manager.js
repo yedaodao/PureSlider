@@ -12,24 +12,29 @@
             container = null,
             pages = null,
             pageNum = 0,
-            baseWidth = 0;
+            baseWidth = 0,
+            pageManager = null;
         return {
             /**
              * 初始化结点
              * @param cDom
-             * @param pageManager
+             * @param pm
              * @returns {boolean}
              */
-            init: function (cDom, pageManager) {
+            init: function (cDom, pm) {
                 carouselDom = cDom;
                 container = carouselDom.find(".carousel-container");
+                pageManager = pm;
                 if (container.hasClass("init"))
                     return false;
                 carouselDom.css("position", "relative").css("overflow", "hidden");
                 pages = container.find(".carousel-page");
                 pageNum = pages.length;
+                $.each(pages, function (i, n) {
+                    pageManager.addPage(n);
+                });
                 this.resize();
-                this.addListener(pageManager);
+                this.addListener();
                 container.addClass("init");
             },
 
@@ -38,7 +43,6 @@
              */
             resize: function () {
                 baseWidth = carouselDom.width();
-                console.log(container.height());
                 carouselDom.height(container.height());
                 container.width(pageNum * baseWidth);
                 $.each(pages, function (i, n) {
@@ -48,29 +52,39 @@
 
             /**
              * 添加固有监听器
-             * @param pageManager
              */
-            addListener: function (pageManager) {
+            addListener: function () {
                 var self = this;
-                $.each(pages, function (i, n) {
-                    pageManager.addPage(n);
-                });
+                carouselDom.click($.proxy(this.turnPage, this, 1));
             },
 
             /**
              * 翻页
-             * @param pageManager
              * @param direction
              */
-            turnPage: function (pageManager, direction) {
+            turnPage: function (direction) {
                 if (direction == 0) {
                     if (!pageManager.prev()) return false;
-                    this.slide(baseWidth * pageManager.getCurrentIndex(), pageManager);
+                    this.slide(baseWidth * pageManager.getCurrentIndex());
                 }
                 else if (direction == 1) {
                     if (!pageManager.next()) return false;
-                    this.slide(-baseWidth * pageManager.getCurrentIndex(), pageManager);
+                    this.slide(-baseWidth * pageManager.getCurrentIndex());
                 }
+            },
+
+            /**
+             * 跳到某页
+             * @param pageIndex
+             * @returns {boolean}
+             */
+            goPage: function (pageIndex) {
+                if (!pageManager.go(pageIndex)) return false;
+                this.slide(baseWidth * pageManager.getCurrentIndex());
+            },
+
+            movePage: function () {
+
             },
 
             /**
@@ -83,9 +97,8 @@
             /**
              * 滚动
              * @param distance
-             * @param pageManager
              */
-            slide: function (distance, pageManager) {
+            slide: function (distance) {
                 container.animate({
                     translate3d: distance + "px,0,0"
                 }, 400, "ease-out", function () {
